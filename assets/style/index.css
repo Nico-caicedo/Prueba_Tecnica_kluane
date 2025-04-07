@@ -1,0 +1,272 @@
+
+
+.ContenidoR{
+    display: flex;
+    gap: 5px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-top: 10px;
+  }
+  
+  .calendar-day {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 4px;
+    min-height: 60px;
+    font-size: 12px;
+    background-color: #fff;
+  }
+  
+  .day-number {
+    font-weight: bold;
+  }
+  
+  .turno {
+    font-size: 11px;
+    background-color: #d0e8ff;
+    border-radius: 4px;
+    padding: 2px;
+    margin-top: 2px;
+  }
+  
+
+  .Cabecera_registros{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #Container_Registros{
+    height: 250px;
+    overflow:scroll;
+  }
+
+
+  .Fecha{
+    width: 80px;
+    text-align: center;
+  }
+
+  .Jornada{
+    width: 120px;
+    text-align: center;
+    
+  }
+  .Maquinaria{
+    width: 150px;
+    text-align: center;
+
+  }
+
+  .Proyecto{
+    width: 180px;
+    text-align: center;
+  }
+
+  .Acciones{
+    width: 100px;
+  }
+
+  input{
+    height: 35px;
+    /* font-weight: 400; */
+  }
+  select{
+    height: 35px;
+  }
+
+  select:hover{
+    cursor: pointer;
+  }
+
+  .title_1{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+  }
+
+  #Container_Registros{
+    display: flex;
+    flex-direction: column;
+ 
+    align-items: center;
+   }
+
+  .form_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #Btn-save{
+    background-color: green;
+    color: white;
+    border: none;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px; /* Centra el texto verticalmente */
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    user-select: none; 
+  
+  }
+  #Btn-save:hover{
+    cursor: pointer;
+  }
+
+  .Btn-hidden{
+    display: none;
+  }
+
+  .Btn-Edit{
+    background-color: green;
+    color: white;
+    border: none;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px; /* Centra el texto verticalmente */
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    user-select: none; 
+  }
+
+  .Btn-Edit:hover{
+    cursor: pointer;
+  }
+
+  .Btn-jornadas{
+    margin-left: 282px;
+    background-color: rgba(34, 102, 248, 0.938);
+    margin-bottom: 15px;
+    
+    color: white;
+    border-radius:5px ;
+    border: none;
+
+  }
+
+  .Btn-jornadas:hover{
+    cursor: pointer;
+  }
+
+  #Container_filtro{
+    margin-left: 280px;
+  }
+  
+
+  .Acciones{
+    display: flex;
+    gap: 5px;
+  }
+
+.icono_edit{
+  background: rgba(32, 136, 255, 0.897);
+  height: 32px;
+}
+
+.icono_edit:hover{
+  cursor: pointer;
+}
+.icono_delete{
+  background: rgba(243, 20, 20, 0.979);
+  height: 32px;
+
+}
+
+.icono_delete:hover{
+  cursor: pointer;
+}
+
+#Container_Jornadas{
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.JornadaT{
+  display: flex;
+}
+
+
+/* Fondo oscuro desenfocado */
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  display: none; /* Oculto por defecto */
+}
+
+/* Estilos del modal */
+#Container_gestion {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: none; /* Oculto por defecto */
+  flex-direction: column;
+}
+
+/* Título */
+.title_1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Inputs alineados */
+.inputs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* Inputs con estilo */
+.input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Mostrar el modal */
+.modal-active {
+  display: flex !important;
+}
+
+#BtnSaveJ{
+  background-color: green;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px; /* Centra el texto verticalmente */
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  user-select: none; 
+}
+
+
