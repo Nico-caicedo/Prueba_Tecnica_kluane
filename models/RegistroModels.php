@@ -16,18 +16,19 @@ class Registro
     public function getRegistersdb()
     {
         $stmt = $this->conexion->prepare("
-    SELECT 
-        t.IdTurno,
-        t.Fecha,
-        t.Maquina,
-        t.Proyecto,
-        t.Idjornada,
-        j.TipoJornada,
-        j.JornadaInicio,
-        j.JornadaFin
-    FROM Turnos t
-    INNER JOIN Jornadas j ON t.IdJornada = j.IdJornada
-    WHERE t.Estado = 1
+   SELECT 
+    t.IdTurno,
+    t.Fecha,
+    t.Maquina,
+    t.Proyecto,
+    t.Idjornada,
+    COALESCE(j.TipoJornada, 'Sin Jornada') AS TipoJornada,
+    j.JornadaInicio,
+    j.JornadaFin
+FROM Turnos t
+LEFT JOIN Jornadas j ON t.IdJornada = j.IdJornada
+WHERE t.Estado = 1;
+
 ");
 
         if ($stmt->execute()) {
@@ -39,10 +40,15 @@ class Registro
                 $horaInicio = date("H:i", strtotime($row['JornadaInicio']));
                 $horaFin = date("H:i", strtotime($row['JornadaFin']));
 
-                // Creamos el texto de la jornada
-                $row['JornadaTexto'] = "{$row['TipoJornada']} - {$horaInicio} a {$horaFin}";
+                if ($row['Idjornada'] != '0') {
+                    $row['JornadaTexto'] = "{$row['TipoJornada']} - {$horaInicio} a {$horaFin}";
+                } else {
+                    $row['JornadaTexto'] = "Sin Jornada";
+                }
 
                 $Resg[] = $row;
+                // Creamos el texto de la jornada
+
             }
 
             header('Content-Type: application/json');
@@ -68,13 +74,14 @@ class Registro
         }
     }
 
-    public function Edit($IdTurno,$maquina, $proyecto, $jornada){
+    public function Edit($IdTurno, $maquina, $proyecto, $jornada)
+    {
 
         $stmt = $this->conexion->prepare("UPDATE Turnos SET Maquina = ?, Proyecto = ?, IdJornada = ? WHERE IdTurno = ?");
-    
+
         // Vinculamos los parámetros correctamente
         $stmt->bind_param("sssi", $maquina, $proyecto, $jornada, $IdTurno); // 'i' para el IdTurno si es numérico
-    
+
         // Ejecutamos la consulta
         if ($stmt->execute()) {
             return true;
@@ -83,26 +90,26 @@ class Registro
         }
     }
 
-    public function Delete($IdTurno){
+    public function Delete($IdTurno)
+    {
         $estado = 0;
-    
+
         if (!$this->conexion) {
             return "Error de conexión con la base de datos.";
         }
-    
+
         $stmt = $this->conexion->prepare("UPDATE Turnos SET Estado = ? WHERE IdTurno = ?");
-    
+
         if (!$stmt) {
             return "Error al preparar la consulta: " . $this->conexion->error;
         }
-    
+
         $stmt->bind_param("ii", $estado, $IdTurno);
-    
+
         if ($stmt->execute()) {
             return true;
         } else {
             return "Algo falló al actualizar el turno: " . $stmt->error;
         }
     }
-    
 }

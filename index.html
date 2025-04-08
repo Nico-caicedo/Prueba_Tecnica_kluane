@@ -1,76 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kluane</title>
     <link rel="stylesheet" href="./assets/style/index.css">
 </head>
+
 <body>
     <header>
         <p class="title_1">Prueba Tecnica Kluane</p>
     </header>
-
-        <input onclick="mostrarModal()"   class="Btn-jornadas" type="button" value="Jornadas" >
+<div class="contenedor-boton">
+    <input onclick="mostrarModal()" class="Btn-jornadas" type="button" value="Jornadas">
+</div>
     
+
     <section class="form_div">
         <form action="" method="post" id="">
-            <input type="date" id="Fecha" placeholder="Fecha"  >
+            <input type="date" id="Fecha" placeholder="Fecha">
             <input type="text" id="Maquina" placeholder="Máquina">
             <input type="text" id="Proyecto" placeholder="Proyecto">
-            <select name="" id="Jornada" >
-               <option value="0">Sin Jornada </option>
+            <select name="" id="Jornada">
+                <option value="0">Sin Jornada </option>
             </select>
-          
-            <p id="Btn-save"  onclick="CreateResgistro()">Guardar Turno</p>
-            <p id="Btn-edit" class="Btn-hidden" onclick="SaveEdit()" >Editar Turno</p>
+
+            <p id="Btn-save" onclick="CreateResgistro()">Guardar Turno</p>
+            <p id="Btn-edit" class="Btn-hidden" onclick="SaveEdit()">Editar Turno</p>
         </form>
     </section>
     <section>
-       <p class="title_1">Turnos Asignados</p>
-       <div id="Container_filtro">Filtrar: <select name="" id="Filtro_Turnos">
-        <option value="">Todos</option>
-       </select></div>
-       <div class="Cabecera_registros">
-        <p class="Fecha" >Fecha</p>
-        <p class="Jornada">Jornada</p>
-        <p class="Maquinaria" >Maquinaria</p>
-        <p class="Proyecto">Proyecto</p>
-        <p class="Acciones">Acciones </p>
-       </div>
-       <div id="Container_Registros">
+        <p class="title_1">Turnos Asignados</p>
+        <div id="Container_filtro">Filtrar: <select name="" id="Filtro_Turnos" onchange="FiltrosRegistros()">
+                <option value="all">Todos</option>
+                <option value="0">Sin Jornada</option>
+            </select></div>
+        <div class="Cabecera_registros">
+            <p class="Fecha">Fecha</p>
+            <p class="Jornada">Jornada</p>
+            <p class="Maquinaria">Maquinaria</p>
+            <p class="Proyecto">Proyecto</p>
+            <p class="Acciones">Acciones </p>
+        </div>
+        <div id="Container_Registros">
 
-       </div>
+        </div>
     </section>
     <section>
         <p class="title_1">Calendario de Turnos</p>
         <div style="text-align: center;">
-          <button onclick="cambiarMes(-1)">← Mes anterior</button>
-          <span id="nombreMes" style="margin: 0 10px; font-weight: bold;"></span>
-          <button onclick="cambiarMes(1)">Mes siguiente →</button>
+            <button onclick="cambiarMes(-1)">← Mes anterior</button>
+            <span id="nombreMes" style="margin: 0 10px; font-weight: bold;"></span>
+            <button onclick="cambiarMes(1)">Mes siguiente →</button>
         </div>
         <div id="calendarContainer" style="margin-top: 10px;"></div>
-      </section>
+    </section>
 
-  <!-- Fondo oscuro -->
-<div id="modal-overlay"></div>
+    <!-- Fondo oscuro -->
+    <div id="modal-overlay"></div>
 
-<!-- Modal -->
-<div id="Container_gestion">
-  <p class="title_1">Jornadas</p>
-  <div class="inputs">
-    <input class="input" type="text" id="TipoJornada" placeholder="Tipo Jornada">
-    <input class="input" type="time" id="HoraInicio">
-    <input class="input" type="time"id="HoraFin">
-    <input type="button"  name="" value="Crear Jornada" id="BtnSaveJ" onclick="CreateJornada()">
-  </div>
-  <div  class="Cabecera_registros">
-    <p class="Jornada">Jornada</p>
-    <p class="Acciones">Acciones</p>
-  </div>
-  <section id="Container_Jornadas"></section>
-</div>
+    <!-- Modal -->
+    <div id="Container_gestion">
+        <p class="title_1">Jornadas</p>
+        <div class="inputs">
+            <input class="input" type="text" id="TipoJornada" placeholder="Tipo Jornada">
+            <div style="display: flex;
+            flex-direction: row;
+            align-items: center;">
+
+                <label for="">Hora Inicial:</label><input class="input" type="time" id="HoraInicio">
+            </div>
+            <div style="display: flex;
+                flex-direction: row;
+                align-items: center;">
+                <label for="">Hora Final: </label><input class="input" type="time" id="HoraFin">
+            </div>
+            <input type="button" name="" value="Crear Jornada" id="BtnSaveJ" onclick="CreateJornada()">
+            <input type="button" name="" class="Btn-hidden" id="Btn-SaveJ" value="Editar Turno" onclick="SaveEditJ()">
+        </div>
+        <div class="Cabecera_registros">
+            <p class="JornadaJ">Jornada</p>
+            <p class="AccionesJ">Acciones</p>
+        </div>
+        <section id="Container_Jornadas"></section>
+    </div>
 
 </body>
+
 </html>
 <script src="./assets/scripts/Register.js"></script>

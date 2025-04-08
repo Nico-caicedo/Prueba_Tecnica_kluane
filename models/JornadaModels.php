@@ -17,7 +17,7 @@ class Jornada
     public function GetJornadas()
     {
         // Preparamos la consulta
-        $stmt = $this->conexion->prepare("SELECT * FROM Jornadas WHERE Estado = 1");
+        $stmt = $this->conexion->prepare("SELECT * FROM Jornadas WHERE Estado = 1 or   Estado = 2");
 
         if ($stmt->execute()) {
             $result = $stmt->get_result();
@@ -25,13 +25,17 @@ class Jornada
 
             while ($row = $result->fetch_assoc()) {
                 // Formatear horas desde la fecha completa
-                $inicio = date("g A", strtotime($row["JornadaInicio"])); // Ej: 10:08 AM
-                $fin = date("g A", strtotime($row["JornadaFin"]));       // Ej: 10:08 PM
-
+                $inicio = date("g:i A", strtotime($row["JornadaInicio"])); // Ej: 10:08 AM
+                $fin = date("g:i A", strtotime($row["JornadaFin"]));       // Ej: 10:08 PM
+                $JornadasI = date("H:i", strtotime($row["JornadaInicio"]));
+                $JornadasF = date("H:i", strtotime($row["JornadaFin"]));
                 $Jornadas[] = [
                     "IdJornada" => $row["IdJornada"],
                     "TipoJornada" => $row["TipoJornada"],
-                    "Horario" => $row["TipoJornada"] . " - " . $inicio . " a " . $fin
+                    "Horario" => $row["TipoJornada"] . " - " . $inicio . " a " . $fin,
+                    "JornadaInicio" => $JornadasI,
+                    "JornadaFin" => $JornadasF,
+                    "Estado" =>  $row["Estado"]
                 ];
             }
 
@@ -57,8 +61,18 @@ class Jornada
         }
     }
 
-    public function Edit(){
-
+    public function Edit($IdJornada,$TipoJornada,$HoraI,$HoraF){
+        $stmt = $this->conexion->prepare("UPDATE Jornadas SET TipoJornada = ?, JornadaInicio = ?, JornadaFin = ? WHERE IdJornada = ?");
+    
+        // Vinculamos los parámetros correctamente
+        $stmt->bind_param("sssi", $TipoJornada, $HoraI, $HoraF, $IdJornada); // 'i' para el IdTurno si es numérico
+    
+        // Ejecutamos la consulta
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return "Algo falló al actualizar el turno: " . $stmt->error;
+        }
     }
 
     public Function Delete($IdJornada){
@@ -84,7 +98,17 @@ class Jornada
 
     }
 
-    public Function Desactive(){
-
+    public Function Desactive($IdJornada,$estado){
+        $stmt = $this->conexion->prepare("UPDATE Jornadas SET Estado = ?  WHERE IdJornada = ?");
+    
+        // Vinculamos los parámetros correctamente
+        $stmt->bind_param("si", $estado, $IdJornada); // 'i' para el IdTurno si es numérico
+    
+        // Ejecutamos la consulta
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return "Algo falló al actualizar el turno: " . $stmt->error;
+        }
     }
 }

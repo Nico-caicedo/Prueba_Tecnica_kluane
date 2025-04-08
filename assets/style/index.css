@@ -1,202 +1,207 @@
-
-
-.ContenidoR{
-    display: flex;
-    gap: 5px;
+.ContenidoR {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
 }
 
 .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-    margin-top: 10px;
-  }
-  
-  .calendar-day {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 4px;
-    min-height: 60px;
-    font-size: 12px;
-    background-color: #fff;
-  }
-  
-  .day-number {
-    font-weight: bold;
-  }
-  
-  .turno {
-    font-size: 11px;
-    background-color: #d0e8ff;
-    border-radius: 4px;
-    padding: 2px;
-    margin-top: 2px;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 10px;
+}
 
-  .Cabecera_registros{
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  #Container_Registros{
-    height: 250px;
-    overflow:scroll;
-  }
+.calendar-day {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px;
+  min-height: 60px;
+  font-size: 12px;
+  background-color: #fff;
+}
 
+.day-number {
+  font-weight: bold;
+}
 
-  .Fecha{
-    width: 80px;
-    text-align: center;
-  }
+.turno {
+  font-size: 11px;
+  background-color: #d0e8ff;
+  border-radius: 4px;
+  padding: 2px;
+  margin-top: 2px;
+}
 
-  .Jornada{
-    width: 120px;
-    text-align: center;
-    
-  }
-  .Maquinaria{
-    width: 150px;
-    text-align: center;
+.Cabecera_registros {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-  }
+#Container_Registros {
+  max-height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-  .Proyecto{
-    width: 180px;
-    text-align: center;
-  }
+.Fecha,
+.Jornada,
+.Maquinaria,
+.Proyecto {
+  text-align: center;
+}
 
-  .Acciones{
-    width: 100px;
-  }
+.Fecha {
+  width: 80px;
+}
 
-  input{
-    height: 35px;
-    /* font-weight: 400; */
-  }
-  select{
-    height: 35px;
-  }
+.Jornada {
+  width: 120px;
+}
 
-  select:hover{
-    cursor: pointer;
-  }
+.Maquinaria {
+  width: 150px;
+}
 
-  .title_1{
-    text-align: center;
-    font-size: x-large;
-    font-weight: bold;
-  }
+.Proyecto {
+  width: 180px;
+}
 
-  #Container_Registros{
-    display: flex;
-    flex-direction: column;
- 
-    align-items: center;
-   }
+.Acciones {
+  width: 100px;
+  display: flex;
+  gap: 5px;
+}
 
-  .form_div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+input,
+select {
+  height: 35px;
+}
 
-  #Btn-save{
-    background-color: green;
-    color: white;
-    border: none;
-    width: 100px;
-    height: 35px;
-    text-align: center;
-    line-height: 35px; /* Centra el texto verticalmente */
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    user-select: none; 
-  
-  }
-  #Btn-save:hover{
-    cursor: pointer;
-  }
+select:hover {
+  cursor: pointer;
+}
 
-  .Btn-hidden{
-    display: none;
-  }
+.title_1 {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+}
 
-  .Btn-Edit{
-    background-color: green;
-    color: white;
-    border: none;
-    width: 100px;
-    height: 35px;
-    text-align: center;
-    line-height: 35px; /* Centra el texto verticalmente */
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    user-select: none; 
-  }
+.form_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-  .Btn-Edit:hover{
-    cursor: pointer;
-  }
+#Btn-save,
+.Btn-Edit,
+#BtnSaveJ {
+  background-color: green;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  user-select: none;
+}
 
-  .Btn-jornadas{
-    margin-left: 282px;
-    background-color: rgba(34, 102, 248, 0.938);
-    margin-bottom: 15px;
-    
-    color: white;
-    border-radius:5px ;
-    border: none;
+#Btn-save:hover,
+.Btn-Edit:hover,
+#BtnSaveJ:hover {
+  cursor: pointer;
+}
 
-  }
+.Btn-hidden {
+  display: none;
+}
 
-  .Btn-jornadas:hover{
-    cursor: pointer;
-  }
+.contenedor-boton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
 
-  #Container_filtro{
-    margin-left: 280px;
-  }
-  
+.Btn-jornadas {
+  background-color: rgba(34, 102, 248, 0.938);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+}
 
-  .Acciones{
-    display: flex;
-    gap: 5px;
-  }
+.Btn-jornadas:hover {
+  cursor: pointer;
+}
 
-.icono_edit{
+#Container_filtro {
+  margin-left: 280px;
+}
+
+.icono_edit {
   background: rgba(32, 136, 255, 0.897);
   height: 32px;
 }
 
-.icono_edit:hover{
+.icono_edit:hover {
   cursor: pointer;
 }
-.icono_delete{
+
+.icono_delete {
   background: rgba(243, 20, 20, 0.979);
   height: 32px;
-
 }
 
-.icono_delete:hover{
+.icono_delete:hover {
   cursor: pointer;
 }
 
-#Container_Jornadas{
+#Container_Jornadas {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 300px;
   overflow-y: scroll;
 }
 
-.JornadaT{
+.JornadaT {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
 }
 
+.JornadaJ {
+  width: 180px;
+}
+
+.AccionesJ {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100px;
+}
+
+.icono_Estado {
+  height: 30px;
+}
+
+.icono_Estado:hover {
+  cursor: pointer;
+}
 
 /* Fondo oscuro desenfocado */
 #modal-overlay {
@@ -208,7 +213,7 @@
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
   z-index: 999;
-  display: none; /* Oculto por defecto */
+  display: none;
 }
 
 /* Estilos del modal */
@@ -217,28 +222,21 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
+  width: 700px;
   background: white;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  display: none; /* Oculto por defecto */
+  display: none;
   flex-direction: column;
-}
-
-/* Título */
-.title_1 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  text-align: center;
 }
 
 /* Inputs alineados */
 .inputs {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -255,18 +253,73 @@
   display: flex !important;
 }
 
-#BtnSaveJ{
-  background-color: green;
-  color: white;
-  border: none;
-  width: 100px;
-  height: 35px;
-  text-align: center;
-  line-height: 35px; /* Centra el texto verticalmente */
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: bold;
-  user-select: none; 
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  #Container_filtro {
+    margin-left: 0;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  #Container_gestion {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
+@media (max-width: 768px) {
+  .Cabecera_registros,
+  .ContenidoR,
+  .form_div,
+  .JornadaT {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
+  .calendar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .Fecha,
+  .Jornada,
+  .Maquinaria,
+  .Proyecto,
+  .AccionesJ,
+  .JornadaJ {
+    width: 100% !important;
+  }
+
+  .inputs {
+    flex-direction: column;
+  }
+
+  .contenedor-boton {
+    justify-content: center;
+  }
+
+  .Btn-jornadas {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .input,
+  select,
+  input {
+    width: 100%;
+  }
+
+  #Btn-save,
+  .Btn-Edit,
+  #BtnSaveJ {
+    width: 100%;
+  }
+}
